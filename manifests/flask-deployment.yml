@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask
+        image: evaander/your-app-flask:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DATABASE_URL
+          value: "mysql://django_user:password123@db:3306/main"
+        - name: DEBUG
+          value: "0"
+      - name: queue
+        image: evaander/your-app-django:latest
+        command: ["python", "-u", "consumer.py"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask
+  namespace: default
+spec:
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30001
+  selector:
+    app: flask
+  type: NodePort
