@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gitops
+  namespace: argocd
+spec:
+  destinations:
+  - namespace: prod
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/CooBRA01/app-gitops
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pfa
+  namespace: argocd
+spec:
+  project: gitops
+  source:
+    repoURL: https://github.com/CooBRA01/app-gitops
+    targetRevision: main
+    path: manifests
+    directory:
+      exclude: argocd-app.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

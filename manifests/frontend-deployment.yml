@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: evaander/your-app-frontend:latest
+        image: evaander/app-frontend:latest
         ports:
         - containerPort: 80
 ---
