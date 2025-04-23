@@ -40,7 +40,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: django
-  namespace: default
+  namespace: prod
 spec:
   ports:
   - port: 8000
