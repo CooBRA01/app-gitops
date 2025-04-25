@@ -24,7 +24,7 @@ spec:
         - name: DEBUG
           value: "0"
       - name: queue
-        image: evaander/your-app-django:latest
+        image: evaander/your-app-flask:latest
         command: ["python", "-u", "consumer.py"]
 ---
 apiVersion: v1

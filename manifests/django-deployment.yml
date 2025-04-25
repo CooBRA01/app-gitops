@@ -23,18 +23,12 @@ spec:
           value: "mysql://django_user:password123@db:3306/admin"
         - name: DEBUG
           value: "0"
-        volumeMounts:
-        - name: media
-          mountPath: /usr/src/app/media
       - name: queue
         image: evaander/your-app-django:latest
         command: ["python", "-u", "consumer.py"]
         env:
         - name: DJANGO_SETTINGS_MODULE
           value: "admin.settings"
-      volumes:
-      - name: media
-        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
@@ -45,7 +39,7 @@ spec:
   ports:
   - port: 8000
     targetPort: 8000
-    nodePort: 30000  # Expose directly for local access
+    nodePort: 30000
   selector:
     app: django
   type: NodePort
