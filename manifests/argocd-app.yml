@@ -6,11 +6,11 @@ metadata:
 spec:
   project: gitops
   source:
-    repoURL: https://github.com/CooBRA01/app-gitops
+    repoURL: https://github.com/COOBRA01/app-gitops
     targetRevision: main
     path: manifests
     directory:
-      exclude: argocd-app.yaml
+      exclude: argocd-app.yml
   destination:
     server: https://kubernetes.default.svc
     namespace: prod
@@ -19,4 +19,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true

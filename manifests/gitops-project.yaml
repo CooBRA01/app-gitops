@@ -8,7 +8,7 @@ spec:
   - namespace: prod
     server: https://kubernetes.default.svc
   sourceRepos:
-  - https://github.com/CooBRA01/app-gitops
+  - https://github.com/COOBRA01/app-gitops
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
