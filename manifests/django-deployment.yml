@@ -20,7 +20,7 @@ spec:
         - containerPort: 8000
         env:
         - name: DATABASE_URL
-          value: "mysql://django_user:password123@db:3306/admin"
+          value: "mysql://django_user:password123@django-db:3306/admin"  # Updated
         - name: DEBUG
           value: "0"
       - name: queue
@@ -29,6 +29,8 @@ spec:
         env:
         - name: DJANGO_SETTINGS_MODULE
           value: "admin.settings"
+        - name: DATABASE_URL  
+          value: "mysql://django_user:password123@django-db:3306/admin"
 ---
 apiVersion: v1
 kind: Service

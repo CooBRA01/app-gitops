@@ -20,12 +20,15 @@ spec:
         - containerPort: 5000
         env:
         - name: DATABASE_URL
-          value: "mysql://django_user:password123@db:3306/main"
+          value: "mysql://django_user:password123@flask-db:3306/main"  
         - name: DEBUG
           value: "0"
       - name: queue
         image: evaander/your-app-flask:latest
         command: ["python", "-u", "consumer.py"]
+        env:
+        - name: DATABASE_URL  
+          value: "mysql://django_user:password123@flask-db:3306/main"
 ---
 apiVersion: v1
 kind: Service
