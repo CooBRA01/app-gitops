@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-init-scripts
+  namespace: prod
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS ADMIN;
+    CREATE DATABASE IF NOT EXISTS MAIN;
+    GRANT ALL PRIVILEGES ON ADMIN.* TO 'django_user'@'%';
+    GRANT ALL PRIVILEGES ON MAIN.* TO 'django_user'@'%';
+    FLUSH PRIVILEGES;
