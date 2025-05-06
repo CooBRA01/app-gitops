@@ -5,8 +5,8 @@ metadata:
   namespace: prod
 data:
   init.sql: |
-    CREATE DATABASE IF NOT EXISTS ADMIN;
-    CREATE DATABASE IF NOT EXISTS MAIN;
-    GRANT ALL PRIVILEGES ON ADMIN.* TO 'django_user'@'%';
-    GRANT ALL PRIVILEGES ON MAIN.* TO 'django_user'@'%';
+    CREATE DATABASE IF NOT EXISTS admin;
+    CREATE DATABASE IF NOT EXISTS main;
+    GRANT ALL PRIVILEGES ON admin.* TO 'django_user'@'%';
+    GRANT ALL PRIVILEGES ON main.* TO 'django_user'@'%';
     FLUSH PRIVILEGES;
