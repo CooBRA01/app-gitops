@@ -16,7 +16,7 @@ spec:
       containers:
       - name: flask
         image: evaander/your-app-flask:latest
-        command: ["/bin/sh", "-c", "gunicorn --bind 0.0.0.0:5000 app:app"]
+        command: ["/bin/sh", "-c", "gunicorn --bind 0.0.0.0:5000 main:app"]
         ports:
         - containerPort: 5000
         env:
@@ -71,8 +71,6 @@ spec:
             secretKeyRef:
               name: app-secrets
               key: RABBITMQ_URL
-        - name: DJANGO_SETTINGS_MODULE
-          value: "app.settings"  # Adjust if different
         resources:
           limits:
             cpu: "200m"
