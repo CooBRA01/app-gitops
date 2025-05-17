@@ -29,4 +29,4 @@ spec:
         - name: DATABASE_URL
           value: "mysql://$(MYSQL_USER):$(MYSQL_PASSWORD)@db:3306/main"
         restartPolicy: Never
-    backoffLimit: 4
+  backoffLimit: 4
