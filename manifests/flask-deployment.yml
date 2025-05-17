@@ -71,10 +71,12 @@ spec:
             secretKeyRef:
               name: app-secrets
               key: RABBITMQ_URL
+        - name: DJANGO_SETTINGS_MODULE
+          value: "app.settings"  # Adjust if different
         resources:
           limits:
             cpu: "200m"
-            memory: "512Mi"  # Increased from 256Mi
+            memory: "512Mi"
           requests:
             cpu: "50m"
             memory: "128Mi"
@@ -83,5 +85,5 @@ spec:
             command: ["python", "-c", "import pika, os; pika.BlockingConnection(pika.URLParameters(os.getenv('RABBITMQ_URL')))"]
           initialDelaySeconds: 30
           periodSeconds: 20
-          timeoutSeconds: 5  # Increased from 1
+          timeoutSeconds: 5
           failureThreshold: 3
