@@ -28,5 +28,5 @@ spec:
               key: RABBITMQ_URL
         - name: DATABASE_URL
           value: "mysql://$(MYSQL_USER):$(MYSQL_PASSWORD)@db:3306/main"
-        restartPolicy: Never
+      restartPolicy: Never
   backoffLimit: 4
