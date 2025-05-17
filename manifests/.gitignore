@@ -1,2 +1,3 @@
 *secrets.yml
 django-migrate-job.yml
+flask-migrate-job.yml
