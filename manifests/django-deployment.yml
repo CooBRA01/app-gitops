@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: django
-        image: evaander/your-app-django:latest
+        image: evaander/your-app-django:6a32a53
         ports:
         - containerPort: 8000
         env:
@@ -57,7 +57,7 @@ spec:
           periodSeconds: 10
 
       - name: queue
-        image: evaander/your-app-django:latest
+        image: evaander/your-app-django:6a32a53
         command: ["python", "-u", "consumer.py"]
         env:
         - name: DJANGO_SETTINGS_MODULE

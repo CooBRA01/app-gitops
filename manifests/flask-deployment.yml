@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: evaander/your-app-flask:latest
+        image: evaander/your-app-flask:6a32a53
         command: ["/bin/sh", "-c", "gunicorn --bind 0.0.0.0:6000 main:app"]
         ports:
         - containerPort: 6000
@@ -63,7 +63,7 @@ spec:
           timeoutSeconds: 1
           failureThreshold: 3
       - name: queue
-        image: evaander/your-app-flask:latest
+        image: evaander/your-app-flask:6a32a53
         command: ["python", "-u", "consumer.py"]
         env:
         - name: RABBITMQ_URL
