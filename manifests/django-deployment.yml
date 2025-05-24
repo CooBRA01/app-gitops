@@ -38,23 +38,23 @@ spec:
           value: "0"
         resources:
           limits:
-            cpu: "400m"
-            memory: "768Mi"
+            cpu: "300m"
+            memory: "512Mi"
           requests:
-            cpu: "150m"
-            memory: "384Mi"
+            cpu: "100m"
+            memory: "256Mi"
         livenessProbe:
           httpGet:
             path: /api/products
             port: 8000
           initialDelaySeconds: 15
-          periodSeconds: 10
+          periodSeconds: 20
         readinessProbe:
           httpGet:
             path: /api/products
             port: 8000
           initialDelaySeconds: 5
-          periodSeconds: 5
+          periodSeconds: 10
 
       - name: queue
         image: evaander/your-app-django:latest
@@ -69,8 +69,8 @@ spec:
               key: RABBITMQ_URL
         resources:
           limits:
-            cpu: "200m"
-            memory: "512Mi"
+            cpu: "150m"
+            memory: "256Mi"
           requests:
             cpu: "50m"
             memory: "128Mi"
@@ -78,7 +78,7 @@ spec:
           exec:
             command: ["python", "-c", "import pika, os; pika.BlockingConnection(pika.URLParameters(os.getenv('RABBITMQ_URL')))"]
           initialDelaySeconds: 30
-          periodSeconds: 20
+          periodSeconds: 30
           timeoutSeconds: 5
           failureThreshold: 3
 
