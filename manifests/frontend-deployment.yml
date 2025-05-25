@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: evaander/app-frontend:3ff3388
+        image: evaander/app-frontend:101e358
         ports:
         - containerPort: 80
         resources:
